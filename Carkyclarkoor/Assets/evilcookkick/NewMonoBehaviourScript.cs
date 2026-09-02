@@ -1,17 +1,16 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI clarksText;
-    [SerializeField] private int _clarks; // backing field
-    [SerializeField] private int clarkstosec;
-    [SerializeField] private int clarkstoclack;
-
-    // Implement interface member (adjust signature to match Clarks if different)
+    [SerializeField] int _clarks;
+    [SerializeField] int clarkstosec;
+    [SerializeField] int clarkstoclack;
+    [SerializeField] int clarkscost;
+    
     public int Clarks
-    {
+    {   
         get => _clarks;
         set => _clarks = value;
     }
@@ -21,15 +20,21 @@ public class NewMonoBehaviourScript : MonoBehaviour
         Clarks = Clarks + 1 + clarkstoclack;
         clarksText.text = Clarks.ToString();
         Debug.Log(Clarks);
-
-        
     }
+
+        void Start()
+    {
+        clarkscost = 10;
+    }
+
     public void cloorkietocloork()
     {
-        if (Clarks >= 10)
+        if (Clarks >= clarkscost)
         {
-            Clarks = Clarks - 10;
+            Clarks = Clarks - clarkscost;
             clarkstoclack = clarkstoclack + 1;
+            clarksText.text = Clarks.ToString();
+            clarkscost = clarkscost + 5;
         }
     }
 }
