@@ -3,38 +3,74 @@ using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI clarksText;
-    [SerializeField] int _clarks;
-    [SerializeField] int clarkstosec;
+    [SerializeField] TextMeshProUGUI numbersText;
+    [SerializeField] int Number;
     [SerializeField] int clarkstoclack;
     [SerializeField] int clarkscost;
-    
-    public int Clarks
-    {   
-        get => _clarks;
-        set => _clarks = value;
-    }
+    [SerializeField] float timer;
+    [SerializeField] bool spammyobtained = false;
+    [SerializeField] int spammy;
+    [SerializeField] int spammycost;
 
-    public void ClarkClacked()
+    private void Update()
     {
-        Clarks = Clarks + 1 + clarkstoclack;
-        clarksText.text = Clarks.ToString();
-        Debug.Log(Clarks);
-    }
 
-        void Start()
-    {
-        clarkscost = 10;
-    }
-
-    public void cloorkietocloork()
-    {
-        if (Clarks >= clarkscost)
+        timer += Time.deltaTime;
+        if (spammyobtained == true)
         {
-            Clarks = Clarks - clarkscost;
+            if (timer >= 1)
+            {
+                timer = 0f;
+                Number = Number + spammy;
+                Numbersclicked();
+            }
+        }
+    }
+
+    public void Numbersclicked()
+    {
+        Number = Number + clarkstoclack;
+        Debug.Log(Number);
+        numbersText.text = Number.ToString();
+    }
+
+    void Start()
+    {
+        clarkscost = 100;
+        clarkstoclack = 1;
+        spammy = 0; spammyobtained = false;
+        spammycost = 10;
+
+    }
+
+    public void Cloorkietocloork()
+    {
+        if (Number >= clarkscost)
+        {
+            Number = Number - clarkscost;
             clarkstoclack = clarkstoclack + 1;
-            clarksText.text = Clarks.ToString();
-            clarkscost = clarkscost + 5;
+            clarkscost = clarkscost + 100;
+            numbersText.text = Number.ToString();
+        }
+    }
+    
+    public void Spammyobtained()
+    {
+        if (Number >= spammycost)
+        {
+            Number = Number - spammycost;
+            spammyobtained = true;
+            spammy = spammy + 1;
+            numbersText.text = Number.ToString();
+            spammycost = spammycost + 10;
+        }
+    }
+
+    public void VICTORYYAYAYAYAYAYAYAY()
+    {
+        if (Number >= 25000)
+        {
+            Debug.Log("VICTORY");
         }
     }
 }
