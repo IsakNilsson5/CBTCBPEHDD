@@ -11,35 +11,44 @@ public class NewMonoBehaviourScript : MonoBehaviour
     [SerializeField] bool spammyobtained = false;
     [SerializeField] int spammy;
     [SerializeField] int spammycost;
-
+    [SerializeField] int divisiontime;
+    [SerializeField] int divisiontimecost;
     private void Update()
     {
 
         timer += Time.deltaTime;
         if (spammyobtained == true)
         {
-            if (timer >= 1)
+            if (timer >= 1f / divisiontime)
             {
                 timer = 0f;
-                Number = Number + spammy;
-                Numbersclicked();
+                Numbersclickedseconds();
             }
         }
     }
 
+    
+    public void Numbersclickedseconds()
+    {
+        Number = Number + spammy;
+        Debug.Log(Number);
+        numbersText.text = Number.ToString();
+    }
     public void Numbersclicked()
     {
-        Number = Number + clarkstoclack;
+        Number = Number + 1 + clarkstoclack;
         Debug.Log(Number);
         numbersText.text = Number.ToString();
     }
 
     void Start()
     {
-        clarkscost = 100;
-        clarkstoclack = 1;
+        clarkscost = 10;
+        clarkstoclack = 0;
         spammy = 0; spammyobtained = false;
-        spammycost = 10;
+        spammycost = 20;
+        divisiontime = 1;
+        divisiontimecost = 500;
 
     }
 
@@ -49,7 +58,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             Number = Number - clarkscost;
             clarkstoclack = clarkstoclack + 1;
-            clarkscost = clarkscost + 100;
+            clarkscost = clarkscost + 10;
             numbersText.text = Number.ToString();
         }
     }
@@ -62,7 +71,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
             spammyobtained = true;
             spammy = spammy + 1;
             numbersText.text = Number.ToString();
-            spammycost = spammycost + 10;
+            spammycost = spammycost + 25;
+        }
+    }
+    public void Divisiontimeobtained()
+    {
+        if (Number >= divisiontimecost)
+        {
+            Number = Number - divisiontimecost;
+            divisiontime = divisiontime + 1;
+            numbersText.text = Number.ToString();
+            divisiontimecost = divisiontimecost + 1000;
         }
     }
 
