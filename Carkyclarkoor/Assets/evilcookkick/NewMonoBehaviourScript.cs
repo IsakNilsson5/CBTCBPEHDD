@@ -7,12 +7,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
     [SerializeField] int Number;
     [SerializeField] int clarkstoclack;
     [SerializeField] int clarkscost;
-    [SerializeField] float timer;
+    float timer;
     [SerializeField] bool spammyobtained = false;
     [SerializeField] int spammy;
     [SerializeField] int spammycost;
     [SerializeField] int divisiontime;
     [SerializeField] int divisiontimecost;
+    [SerializeField] Animator CARKEHAnimator;
+    [SerializeField] int greatctccost;
+    [SerializeField] int greatspammycost;
+    [SerializeField] int greaterctccost;
+    [SerializeField] int greaterspammycost;
     private void Update()
     {
 
@@ -27,18 +32,20 @@ public class NewMonoBehaviourScript : MonoBehaviour
         }
     }
 
-    
+
     public void Numbersclickedseconds()
     {
         Number = Number + spammy;
         Debug.Log(Number);
         numbersText.text = Number.ToString();
+        CARKEHAnimator.SetTrigger("buttonshake");
     }
     public void Numbersclicked()
     {
         Number = Number + 1 + clarkstoclack;
         Debug.Log(Number);
         numbersText.text = Number.ToString();
+        CARKEHAnimator.SetTrigger("buttonshake");
     }
 
     void Start()
@@ -49,6 +56,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
         spammycost = 20;
         divisiontime = 1;
         divisiontimecost = 500;
+        greatctccost = 100;
+        greatspammycost = 200;
+        greaterctccost = 1000;
+        greaterspammycost = 2000;
 
     }
 
@@ -62,7 +73,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             numbersText.text = Number.ToString();
         }
     }
-    
+
     public void Spammyobtained()
     {
         if (Number >= spammycost)
@@ -84,12 +95,46 @@ public class NewMonoBehaviourScript : MonoBehaviour
             divisiontimecost = divisiontimecost + 1000;
         }
     }
-
-    public void VICTORYYAYAYAYAYAYAYAY()
+    public void Greatcoktocak()
     {
-        if (Number >= 25000)
+        if (Number >= greatctccost)
         {
-            Debug.Log("VICTORY");
+            Number = Number - greatctccost;
+            numbersText.text = Number.ToString();
+            clarkstoclack = clarkstoclack + 10;
+            greatctccost = greatctccost + 90;
+        }
+    }
+    public void Greatspammyobtained()
+    {
+        if (Number >= greatspammycost)
+        {
+            Number = Number - greatspammycost;
+            spammyobtained = true;
+            spammy = spammy + 10;
+            numbersText.text = Number.ToString();
+            greatspammycost = greatspammycost + 240;
+        }
+    }
+    public void Greatercoktocak()
+    {
+        if (Number >= greatctccost)
+        {
+            Number = Number - greaterctccost;
+            numbersText.text = Number.ToString();
+            clarkstoclack = clarkstoclack + 100;
+            greaterctccost = greaterctccost + 800;
+        }
+    }
+    public void Greaterspammyobtained()
+    {
+        if (Number >= greaterspammycost)
+        {
+            Number = Number - greaterspammycost;
+            spammyobtained = true;
+            spammy = spammy + 100;
+            numbersText.text = Number.ToString();
+            greaterspammycost = greaterspammycost + 2300;
         }
     }
 }
