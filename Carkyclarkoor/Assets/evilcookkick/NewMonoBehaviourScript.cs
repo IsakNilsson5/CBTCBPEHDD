@@ -1,7 +1,8 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class Game : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI numbersText;
     [SerializeField] int Number;
@@ -39,6 +40,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
         Debug.Log(Number);
         numbersText.text = Number.ToString();
         CARKEHAnimator.SetTrigger("buttonshake");
+        if (Number >= 250000)
+        {
+            SceneManager.LoadScene("areyouawinner");
+        }
     }
     public void Numbersclicked()
     {
@@ -46,6 +51,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
         Debug.Log(Number);
         numbersText.text = Number.ToString();
         CARKEHAnimator.SetTrigger("buttonshake");
+        if (Number >= 250000)
+        {
+            SceneManager.LoadScene("areyouawinner");
+        }
     }
 
     void Start()
@@ -118,7 +127,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     }
     public void Greatercoktocak()
     {
-        if (Number >= greatctccost)
+        if (Number >= greaterctccost)
         {
             Number = Number - greaterctccost;
             numbersText.text = Number.ToString();
@@ -137,4 +146,5 @@ public class NewMonoBehaviourScript : MonoBehaviour
             greaterspammycost = greaterspammycost + 2300;
         }
     }
+    
 }
