@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class Game : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI numbersText;
+    [SerializeField] TextMeshProUGUI upgradeItext;
+    [SerializeField] TextMeshProUGUI upgradeIItext;
+    [SerializeField] TextMeshProUGUI upgradeIIItext;
+    [SerializeField] TextMeshProUGUI upgradeIVtext;
+    [SerializeField] TextMeshProUGUI upgradeVtext;
+    [SerializeField] TextMeshProUGUI upgradeVItext;
+    [SerializeField] TextMeshProUGUI upgradeVIItext;
     [SerializeField] int Number;
     [SerializeField] int clarkstoclack;
     [SerializeField] int clarkscost;
@@ -40,10 +48,6 @@ public class Game : MonoBehaviour
         Debug.Log(Number);
         numbersText.text = Number.ToString();
         CARKEHAnimator.SetTrigger("buttonshake");
-        if (Number >= 250000)
-        {
-            SceneManager.LoadScene("areyouawinner");
-        }
     }
     public void Numbersclicked()
     {
@@ -51,23 +55,26 @@ public class Game : MonoBehaviour
         Debug.Log(Number);
         numbersText.text = Number.ToString();
         CARKEHAnimator.SetTrigger("buttonshake");
-        if (Number >= 250000)
-        {
-            SceneManager.LoadScene("areyouawinner");
-        }
     }
 
     void Start()
     {
         clarkscost = 10;
+        upgradeItext.text = "10";
         clarkstoclack = 0;
         spammy = 0; spammyobtained = false;
+        upgradeIItext.text = "20";
         spammycost = 20;
         divisiontime = 1;
+        upgradeIIItext.text = "500";  // x^2 + x + 2x + 2 smthin like this
         divisiontimecost = 500;
+        upgradeIVtext.text = "100";
         greatctccost = 100;
+        upgradeVtext.text = "200";
         greatspammycost = 200;
+        upgradeVItext.text = "1000";
         greaterctccost = 1000;
+        upgradeVIItext.text = "2000";
         greaterspammycost = 2000;
 
     }
@@ -80,6 +87,7 @@ public class Game : MonoBehaviour
             clarkstoclack = clarkstoclack + 1;
             clarkscost = clarkscost + 10;
             numbersText.text = Number.ToString();
+            upgradeItext.text = clarkscost.ToString();
         }
     }
 
@@ -92,6 +100,7 @@ public class Game : MonoBehaviour
             spammy = spammy + 1;
             numbersText.text = Number.ToString();
             spammycost = spammycost + 25;
+            upgradeIItext.text = spammycost.ToString();
         }
     }
     public void Divisiontimeobtained()
@@ -102,6 +111,7 @@ public class Game : MonoBehaviour
             divisiontime = divisiontime + 1;
             numbersText.text = Number.ToString();
             divisiontimecost = divisiontimecost + 1000;
+            upgradeIIItext.text = divisiontimecost.ToString();
         }
     }
     public void Greatcoktocak()
@@ -146,5 +156,11 @@ public class Game : MonoBehaviour
             greaterspammycost = greaterspammycost + 2300;
         }
     }
-    
+    public void Thegreatvictory()
+    {
+        if (Number >= 250000)
+        {
+            SceneManager.LoadScene("areyouawinner");
+        }
+    }
 }
