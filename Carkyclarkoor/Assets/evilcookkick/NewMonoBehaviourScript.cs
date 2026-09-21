@@ -122,6 +122,7 @@ public class Game : MonoBehaviour
             numbersText.text = Number.ToString();
             clarkstoclack = clarkstoclack + 10;
             greatctccost = greatctccost + 90;
+            upgradeIVtext.text = greatctccost.ToString();
         }
     }
     public void Greatspammyobtained()
@@ -133,6 +134,7 @@ public class Game : MonoBehaviour
             spammy = spammy + 10;
             numbersText.text = Number.ToString();
             greatspammycost = greatspammycost + 240;
+            upgradeVtext.text = greatspammycost.ToString();
         }
     }
     public void Greatercoktocak()
@@ -143,6 +145,7 @@ public class Game : MonoBehaviour
             numbersText.text = Number.ToString();
             clarkstoclack = clarkstoclack + 100;
             greaterctccost = greaterctccost + 800;
+            upgradeVItext.text = greaterctccost.ToString();
         }
     }
     public void Greaterspammyobtained()
@@ -154,6 +157,7 @@ public class Game : MonoBehaviour
             spammy = spammy + 100;
             numbersText.text = Number.ToString();
             greaterspammycost = greaterspammycost + 2300;
+            upgradeVIItext.text = greaterspammycost.ToString();
         }
     }
     public void Thegreatvictory()
