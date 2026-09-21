@@ -1,5 +1,6 @@
 using System.Security.Cryptography;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,8 @@ public class HarderScript : MonoBehaviour
     [SerializeField] TextMeshProUGUI upgradeIIItext;
     [SerializeField] TextMeshProUGUI upgradeIVtext;
     [SerializeField] TextMeshProUGUI upgradeVtext;
+    [SerializeField] TextMeshProUGUI endingtext;
+    [SerializeField] int phase;
 
     float Number;
     [SerializeField] int clarkstoclack;
@@ -19,7 +22,7 @@ public class HarderScript : MonoBehaviour
     float spammy;
     [SerializeField] int addtime;
     [SerializeField] int addtimecost;
-    [SerializeField] Animator CARKEHAnimator;
+    [SerializeField] Animator GREATERCARKEHAnimator;
     [SerializeField] int worsectccost;
     [SerializeField] int badctccost;
     [SerializeField] int worstctccost;
@@ -48,27 +51,28 @@ public class HarderScript : MonoBehaviour
         Number = Number + 1 + clarkstoclack;
         Debug.Log(Number);
         numbersText.text = Number.ToString();
-        CARKEHAnimator.SetTrigger("buttonshake");
+        GREATERCARKEHAnimator.SetTrigger("buttonshake");
     }
 
     void Start()
     {
-        Number = 0; 
+        phase = 1;
+        Number = 0;
         clarkscost = 20;
         upgradeItext.text = "20";
         clarkstoclack = 0;
         spammy = 1f;
-        addtime = 1;
+        addtime = 0;
         upgradeIItext.text = "1000";
         addtimecost = 1000;
-        upgradeIIItext.text = "200";
+        upgradeIIItext.text = "200";    
         badctccost = 200;
         upgradeIVtext.text = "2000";
         worsectccost = 2000;
         upgradeVtext.text = "20000";
         worstctccost = 20000;
         spammytimer = 0f;
-
+        endingtext.text = "50000";
     }
 
     public void Cloorkietocloork()
@@ -83,7 +87,7 @@ public class HarderScript : MonoBehaviour
         }
     }
 
-    public void Divisiontimeobtained()
+    public void Addtimeobtained()
     {
         if (Number >= addtimecost)
         {
@@ -139,9 +143,46 @@ public class HarderScript : MonoBehaviour
     }
     public void Thegreatvictory()
     {
-        if (Number >= 250000)
+        if (Number >= 50000 && phase == 1)
         {
+            Number = 0;
+            phase = 2;
+            spammy = spammy + 20;
+            spammytimer = spammytimer + 2;
+            endingtext.text = "100000";
+            return;
+        }
+        
+        if (Number >= 100000 && phase == 2)
+        {
+            Number = 0;
+            phase = 3;
+            spammy = spammy + 30;
+            spammytimer = spammytimer + 3;
+            addtime = addtime - 1;
+            endingtext.text = "500000";
+            return;
+        }
+        
+        if (Number >= 500000 && phase == 3)
+        {
+            Number = 0;
+            phase = 3;
+            spammy = spammy + (addtime*10);
+            spammytimer = spammytimer + addtime;
+            addtime = 0;
+            endingtext.text = "2000000";
+            return;
+        }
+
+        if (Number >= 2000000 && phase == 4)
+        {
+
             SceneManager.LoadScene("areyouawinner");
+            //achievement obtained! The Great Clicker!
+            //if Addtimer = 0, get Achievement "The battle against Time"
+            //if clarkstoclack = 0, get achievement "The Greater Clicker!"
+            //if Addtimer = 0 and clarkstoclack = 0, get achievement "The Conqueror of CarkyClarkoor"
         }
     }
 }

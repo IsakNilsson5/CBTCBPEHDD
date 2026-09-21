@@ -165,6 +165,11 @@ public class Game : MonoBehaviour
         if (Number >= 250000)
         {
             SceneManager.LoadScene("areyouawinner");
+            //Achievement obtained! "A Winner nontheless."
+            //if Divisiontimer = 1, get achievement "One second at a time"
+            //if spammyobtained = false, get another Achievement "Full of energy!"
+            //if clarkstoclack = 0, get another Achievement "The Persistent Clicker!"
+            //if clarkstoclack is 0 and spammyobtained = false, get another Achievement "The goat of Clickers"
         }
     }
 }

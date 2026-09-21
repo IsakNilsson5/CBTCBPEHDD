@@ -10,5 +10,9 @@ public class youbeatmygameyoulearntlot : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }  
+    public void Secretmodetotally()
+    {
+        SceneManager.LoadScene("HardMode");
+    }
 }
  
