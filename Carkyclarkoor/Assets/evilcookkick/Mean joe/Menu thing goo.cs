@@ -7,6 +7,8 @@ public class MenuThing : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-
+    public void HARDMODE()
+    {
+        SceneManager.LoadScene("HardMode");
+    }
 }
-
