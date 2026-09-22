@@ -9,6 +9,6 @@ public class MenuThing : MonoBehaviour
     }
     public void HARDMODE()
     {
-        SceneManager.LoadScene("HardMode");
+        SceneManager.LoadScene(3);
     }
 }

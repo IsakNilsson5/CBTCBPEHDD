@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class youbeatmygameyoulearntlot : MonoBehaviour
+public class Youbeatmygameyoulearntlot : MonoBehaviour
 {
     public void ResetGame()
     {
@@ -12,7 +12,7 @@ public class youbeatmygameyoulearntlot : MonoBehaviour
     }  
     public void Secretmodetotally()
     {
-        SceneManager.LoadScene("HardMode");
+        SceneManager.LoadScene(3);
     }
 }
  
