@@ -12,6 +12,7 @@ public class HarderScript : MonoBehaviour
     [SerializeField] TextMeshProUGUI upgradeIIItext;
     [SerializeField] TextMeshProUGUI upgradeIVtext;
     [SerializeField] TextMeshProUGUI upgradeVtext;
+    [SerializeField] TextMeshProUGUI upgradeVItext;
     [SerializeField] TextMeshProUGUI endingtext;
     [SerializeField] TextMeshProUGUI Timer2;
     [SerializeField] int phase;
@@ -27,6 +28,7 @@ public class HarderScript : MonoBehaviour
     [SerializeField] int worsectccost;
     [SerializeField] int badctccost;
     [SerializeField] int worstctccost;
+    [SerializeField] int cleancost;
     float spammytimer;
     private void Update()
     {
@@ -101,6 +103,7 @@ public class HarderScript : MonoBehaviour
             upgradeIItext.text = addtimecost.ToString();
             spammytimer = spammytimer + -0.001f;
             spammy = spammy - 1f;
+            Timer2.text = ((1f - spammytimer) + addtime).ToString();
         }
     }
     public void Badcoktocak()
@@ -144,6 +147,21 @@ public class HarderScript : MonoBehaviour
             spammy = spammy + 100f;
         }
     }
+    public void Cleanse()
+    {
+        if (Number >= cleancost)
+        {
+            Number = Number - cleancost;
+            numbersText.text = Number.ToString();
+            cleancost = cleancost + 100000;
+            upgradeVItext.text = cleancost.ToString();
+            spammytimer = 0;
+            spammy = spammy - 250;
+            Timer2.text = ((1f - spammytimer) + addtime).ToString();
+
+        }
+            
+    }
     public void Thegreatvictory()
     {
         if (Number >= 50000 && phase == 1)
@@ -153,6 +171,7 @@ public class HarderScript : MonoBehaviour
             spammy = spammy + 20;
             spammytimer = spammytimer + 2;
             endingtext.text = "100000";
+            numbersText.text = Number.ToString();
             return;
         }
         
@@ -164,6 +183,7 @@ public class HarderScript : MonoBehaviour
             spammytimer = spammytimer + 3;
             addtime = addtime - 1;
             endingtext.text = "500000";
+            numbersText.text = Number.ToString();
             return;
         }
         
@@ -175,6 +195,7 @@ public class HarderScript : MonoBehaviour
             spammytimer = spammytimer + (addtime/4);
             addtime = addtime*3/4;
             endingtext.text = "2000000";
+            numbersText.text = Number.ToString();
             return;
         }
 
@@ -213,6 +234,7 @@ public class HarderScript : MonoBehaviour
             spammytimer = 0f;
             endingtext.text = "50000";
             Timer2.text = "1";
+            numbersText.text = Number.ToString();
         }
     }
 }

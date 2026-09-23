@@ -34,6 +34,9 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/Scenes/HardMode.unity
     m_guid: dcdd0e94e3b18524aa98ef71d7834089
+  - m_enabled: 1
+    m_path: Assets/Scenes/areyouawinnerHardMode.unity
+    m_guid: 164a89efbf411d341810e63210abad65
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
