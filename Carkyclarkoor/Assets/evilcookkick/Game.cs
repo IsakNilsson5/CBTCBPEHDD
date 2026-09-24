@@ -225,7 +225,7 @@ public class Game : MonoBehaviour
         {
             Number = Number - greatmultipliercost;
             multiplier = multiplier + 10;
-            greatmultipliercost = multiplier + 10000000;
+            greatmultipliercost = greatmultipliercost + 10000000;
             numbers.text = Number.ToString();
             upgradeXI.text = greatmultipliercost.ToString();
             multiply.text = multiplier.ToString();
