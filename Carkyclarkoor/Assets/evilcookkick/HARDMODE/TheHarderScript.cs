@@ -78,6 +78,8 @@ public class HarderScript : MonoBehaviour
         spammytimer = 0f;
         endingtext.text = "50000";
         Timer2.text = "1";
+        cleancost = 100000;
+        upgradeVItext.text = "100000";
     }
 
     public void Cloorkietocloork()
@@ -235,6 +237,8 @@ public class HarderScript : MonoBehaviour
             endingtext.text = "50000";
             Timer2.text = "1";
             numbersText.text = Number.ToString();
+            cleancost = 100000;
+            upgradeVItext.text = "100000";
         }
     }
 }
