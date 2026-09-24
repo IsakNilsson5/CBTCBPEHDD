@@ -204,7 +204,7 @@ public class HarderScript : MonoBehaviour
         if (Number >= 2000000 && phase == 4)
         {
 
-            SceneManager.LoadScene("areyouawinner");
+            SceneManager.LoadScene("areyouawinnerHardMode");
             //achievement obtained! The Great Clicker!
             //if Addtimer = 0, get Achievement "The battle against Time"
             //if clarkstoclack = 0, get achievement "The Greater Clicker!"
